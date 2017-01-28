@@ -1,6 +1,71 @@
-import Cycle from '@cycle/xstream-run'
-import { makeDOMDriver } from '@cycle/dom'
+var creations = [{
+  'bannerName': 'Banner 1',
+  'companyName': 'Company 1',
+  'country': 'Country 1',
+  'designer': 'Designer 1',
+  'rating': 'rating 1',
+  'image': 'http://24.media.tumblr.com/dd4509f78fc468b95625f993f657886e/tumblr_mkr3tnjoCj1rwys80o1_400.gif'
+}, {
+  'bannerName': 'Banner 2',
+  'companyName': 'Company 2',
+  'country': 'Country 2',
+  'designer': 'Designer 2',
+  'rating': 'rating 2',
+  'image': 'https://s-media-cache-ak0.pinimg.com/originals/c4/dd/5d/c4dd5d671bb86d8551e9697c2d9ece06.gif'
+}]
 
-const counter = require('./counter').default
+creations.forEach(function(creation) {
+  createPanelItem(creation)
+})
 
-Cycle.run(counter, { DOM: makeDOMDriver('.app') })
+function createPanelItem(creation) {
+  var panelItem = document.createElement('div')
+  panelItem.className = 'column'
+
+  var innerContainer = document.createElement('div')
+  innerContainer.className = 'ui segment inverted grey'
+  panelItem.appendChild(innerContainer)
+  // image container
+  var panelImageContainer = document.createElement('div')
+  panelImageContainer.className = 'panel image'
+  var panelImage = document.createElement('img')
+  panelImage.className = 'ui image'
+  panelImage.src = creation.image
+  innerContainer.appendChild(panelImageContainer)
+  panelImageContainer.appendChild(panelImage)
+
+  // info container
+  var panelInfoContainer = document.createElement('div')
+  panelInfoContainer.className = 'panel info'
+  innerContainer.appendChild(panelInfoContainer)
+  // info list
+  var infoList = document.createElement('ul')
+  infoList.className = 'main info'
+  var infoItem1 = document.createElement('li')
+  infoItem1.appendChild(document.createTextNode(creation.bannerName))
+  var infoItem2 = document.createElement('li')
+  infoItem2.appendChild(document.createTextNode('for ' + creation.companyName + ' from ' + creation.country))
+  var infoItem3 = document.createElement('li')
+  infoItem3.appendChild(document.createTextNode('Made by ' + creation.designer))
+  panelInfoContainer.appendChild(infoList)
+  infoList.appendChild(infoItem1)
+  infoList.appendChild(infoItem2)
+  infoList.appendChild(infoItem3)
+  // rating
+  var rating = document.createElement('div')
+  rating.className = 'rating'
+  panelInfoContainer.appendChild(rating)
+  var ratingList = document.createElement('ul')
+  for (var i = 0; i < 5; i++) {
+    rating.appendChild(ratingList)
+    var listItem = document.createElement('li')
+    var starFull = document.createElement('i')
+    starFull.className = 'star icon'
+    listItem.appendChild(starFull)
+    ratingList.appendChild(listItem)
+  }
+
+  console.log(panelItem)
+  document.getElementById('panel-list').appendChild(panelItem)
+}
+// console.table(creations)
