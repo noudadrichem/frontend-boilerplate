@@ -1,10 +1,8 @@
 # frontend-boilerplate
-boilerplate for frontend projects, currently only supports cyclejs + semantic ui
-
-TODO make multiple branches
+boilerplate for frontend projects.
 
 ## features
-* hot module reloading 
+* hot module reloading
 * injecting css
-* linting 
+* linting
 * purify css
