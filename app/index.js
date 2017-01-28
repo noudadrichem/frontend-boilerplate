@@ -64,6 +64,11 @@ function createPanelItem(creation) {
     listItem.appendChild(starFull)
     ratingList.appendChild(listItem)
   }
+  var button = document.createElement('a')
+  button.className = 'ui tiny button pink'
+  button.href = '#'
+  button.innerHTML = 'See more'
+  ratingList.appendChild(button)
 
   console.log(panelItem)
   document.getElementById('panel-list').appendChild(panelItem)
