@@ -56,16 +56,21 @@ function createPanelItem(creation) {
   rating.className = 'rating'
   panelInfoContainer.appendChild(rating)
   var ratingList = document.createElement('ul')
-  rating.appendChild(ratingList)
-  var listItem = document.createElement('li')
-  var starFull = document.createElement('i')
-  starFull.className = 'star icon'
-  listItem.appendChild(starFull)
   for (var i = 0; i < 5; i++) {
-    ratingList.appendChild(listItem.cloneNode())
+    rating.appendChild(ratingList)
+    var listItem = document.createElement('li')
+    var starFull = document.createElement('i')
+    starFull.className = 'star icon'
+    listItem.appendChild(starFull)
+    ratingList.appendChild(listItem)
   }
+  // button
+  var button = document.createElement('a')
+  button.className = 'ui tiny button pink'
+  button.href = '#'
+  button.innerHTML = 'See more'
+  ratingList.appendChild(button)
 
   console.log(panelItem)
   document.getElementById('panel-list').appendChild(panelItem)
 }
-// console.table(creations)
