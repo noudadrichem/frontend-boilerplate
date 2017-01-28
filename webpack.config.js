@@ -2,21 +2,21 @@ const webpack = require('webpack')
 const path = require('path')
 
 const plugins = env => env === 'develop' ? [
-      new webpack.optimize.OccurenceOrderPlugin(),
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoErrorsPlugin()
-    ] : []
+  new webpack.optimize.OccurenceOrderPlugin(),
+  new webpack.HotModuleReplacementPlugin(),
+  new webpack.NoErrorsPlugin()
+] : []
 
 const entry = env => env === 'develop' ? [
-      'webpack/hot/dev-server',
-      'webpack-hot-middleware/client',
-      './index.js'
-    ] : ['./index.js']
+  'webpack/hot/dev-server',
+  'webpack-hot-middleware/client',
+  './index.js'
+] : ['./index.js']
 
 const loaders = env => env === 'develop' ? [
-      'babel-loader',
-      'eslint-loader'
-    ] : ['babel-loader']
+  'babel-loader',
+  'eslint-loader'
+] : ['babel-loader']
 
 module.exports = env => {
   return {

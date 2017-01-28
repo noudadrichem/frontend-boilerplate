@@ -12,7 +12,6 @@ const uglify = require('gulp-uglify')
 const cleanCSS = require('gulp-clean-css')
 const purify = require('gulp-purifycss')
 
-
 const webpack = require('webpack')
 const webpackStream = require('gulp-webpack')
 
@@ -46,7 +45,7 @@ gulp.task('build:prod', 'building production', ['clean'], () => {
   gulp.start('build')
 })
 
-gulp.task('build', 'building files', ['html', 'scripts', 'semantic', 'styles'])
+gulp.task('build', 'building files', ['html', 'scripts', 'semantic', 'styles', 'assets'])
 
 gulp.task('clean', 'cleaning dist/', () => {
   return gulp.src(gulp.paths.dist, { read: false })
@@ -62,7 +61,7 @@ gulp.task('serve', 'browserSync with webpack middleware', ['build'], () => {
           publicPath: webpackConfig.output.publicPath,
           stats: {
             colors: true,
-            chunks: false,
+            chunks: false
           }
         }),
         webpackHotMiddleware(middlewareBundler)
@@ -105,5 +104,12 @@ gulp.task('styles', 'building custom stylus', () => {
     .pipe(gulpif(isProd, purify([gulp.paths.app + '/**/*.js'])))
     .pipe(gulpif(isProd, cleanCSS({ compatibility: 'ie8' })))
     .pipe(gulp.dest(gulp.paths.dist))
+    .pipe(gulpif(isDev, browserSync.stream()))
+})
+// Klaas's font task
+gulp.task('assets', 'moving assets to dist', () => {
+  browserSync.notify('moving: assets')
+  return gulp.src(gulp.paths.semantic + '/themes/**/fonts/*')
+    .pipe(gulp.dest(gulp.paths.dist + '/themes'))
     .pipe(gulpif(isDev, browserSync.stream()))
 })

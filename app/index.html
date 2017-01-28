@@ -1,20 +1,58 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-
-    <meta name="description" content="Cycle.js example - Counter" />
-
-    <link rel="stylesheet" type="text/css" href="./semantic.css">
-    <link rel="stylesheet" type="text/css" href="./main.css">
-
-    <title>Cycle.js example - test</title>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./semantic.css">
+  <link rel="stylesheet" type="text/css" href="./main.css">
+  <title>Bannerwise | Community</title>
 </head>
 
 <body>
-    <div class="app"></div>
-    <script src="app.js"></script>
+   <div class='ui menu fixed inverted blue'>
+     <div class='ui container'>
+       <a href="index.html" class='ui small image'>
+         <img class="ui image" src="https://s3.eu-central-1.amazonaws.com/bannerwise-assets/images/logo_bannerwise_wit.svg" alt="bannerwise logo">
+       </a>
+       <a class='item right' href='#benefits'><span class="">Benefits</span></a>
+       <a class='item' href='#contact'>Contact</a>
+       <a class='item' href='#pricing'>Pricing</a>
+       <a class='item' href='https://client.bannerwise.io'>Login</a>
+     </div>
+   </div>
+
+  <section class="ui segment panels">
+    <div class="ui container">
+      <div class="ui three column grid" id="panel-list">
+      <div class="column">
+        <div class="ui segment inverted grey">
+          <div class="panel image">
+            <img class="ui image" src="https://s-media-cache-ak0.pinimg.com/originals/c4/dd/5d/c4dd5d671bb86d8551e9697c2d9ece06.gif" alt="image">
+          </div>
+          <div class="panel info">
+            <ul class="main info">
+              <li>Banner Name</li>
+              <li>For <span>Company Name</span> from <span>The Netherlands</span></li>
+              <li>Made by <span>Designer Name</span></li>
+            </ul>
+            <div class="rating">
+              <ul>
+                <li><i class="star icon"></i></li>
+                <li><i class="star icon"></i></li>
+                <li><i class="star half empty icon"></i></li>
+                <li><i class="star empty icon"></i></li>
+                <li><i class="star empty icon"></i></li>
+                <a class="ui tiny button pink" href="#">See more</a>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="ui segment inverted blue">&copy; Neuroko | All rights reserverd</div>
+
+  <script src="app.js"></script>
 </body>
