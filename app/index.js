@@ -74,4 +74,3 @@ function createPanelItem(creation) {
   console.log(panelItem)
   document.getElementById('panel-list').appendChild(panelItem)
 }
-// console.table(creations)
