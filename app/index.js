@@ -1,3 +1,5 @@
+import {requestPost} from './requestBannerPage.js'
+requestPost()
 var creations = [{
   'bannerName': 'Banner 1',
   'companyName': 'Company 1',
@@ -11,7 +13,7 @@ var creations = [{
   'country': 'Country 2',
   'designer': 'Designer 2',
   'rating': 'rating 2',
-  'image': 'https://s-media-cache-ak0.pinimg.com/originals/c4/dd/5d/c4dd5d671bb86d8551e9697c2d9ece06.gif'
+  'image': 'http://images5.fanpop.com/image/photos/26000000/Nyan-Pikachu-Gif-nyan-cat-26042081-500-375.gif'
 }]
 
 creations.forEach(function(creation) {
@@ -56,8 +58,8 @@ function createPanelItem(creation) {
   rating.className = 'rating'
   panelInfoContainer.appendChild(rating)
   var ratingList = document.createElement('ul')
+  rating.appendChild(ratingList)
   for (var i = 0; i < 5; i++) {
-    rating.appendChild(ratingList)
     var listItem = document.createElement('li')
     var starFull = document.createElement('i')
     starFull.className = 'star icon'

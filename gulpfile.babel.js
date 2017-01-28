@@ -54,6 +54,7 @@ gulp.task('clean', 'cleaning dist/', () => {
 
 gulp.task('serve', 'browserSync with webpack middleware', ['build'], () => {
   browserSync.init({
+    port: 3002,
     server: {
       baseDir: gulp.paths.dist,
       middleware: [
@@ -72,7 +73,6 @@ gulp.task('serve', 'browserSync with webpack middleware', ['build'], () => {
   gulp.watch([gulp.paths.styles + '/**/*.styl'], ['styles'])
   gulp.watch([gulp.paths.app + '/**/*.html'], ['html'])
   gulp.watch([gulp.paths.semantic + '/**/*.*'], ['semantic'])
-
 })
 
 gulp.task('scripts', 'bundle app (only used for builds)', () => {
