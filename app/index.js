@@ -14,65 +14,48 @@ var creations = [{
   'designer': 'Designer 2',
   'rating': 'rating 2',
   'image': 'http://images5.fanpop.com/image/photos/26000000/Nyan-Pikachu-Gif-nyan-cat-26042081-500-375.gif'
+}, {
+  'bannerName': 'Banner 3',
+  'companyName': 'Company 3',
+  'country': 'Country 3',
+  'designer': 'Designer 3',
+  'rating': 'rating 3',
+  'image': 'https://media.giphy.com/media/i3LVQMwESvRw4/giphy.gif'
+}, {
+  'bannerName': 'Banner 4',
+  'companyName': 'Company 4',
+  'country': 'Country 4',
+  'designer': 'Designer 4',
+  'rating': 'rating 4',
+  'image': 'http://vignette4.wikia.nocookie.net/nyancat/images/b/b8/Nyan_dash_by_flavinbagel-d4o93k7.gif/revision/latest?cb=20120526010044'
 }]
 
-creations.forEach(function(creation) {
-  createPanelItem(creation)
-})
-
-function createPanelItem(creation) {
-  var panelItem = document.createElement('div')
-  panelItem.className = 'column'
-
-  var innerContainer = document.createElement('div')
-  innerContainer.className = 'ui segment inverted grey'
-  panelItem.appendChild(innerContainer)
-  // image container
-  var panelImageContainer = document.createElement('div')
-  panelImageContainer.className = 'panel image'
-  var panelImage = document.createElement('img')
-  panelImage.className = 'ui image'
-  panelImage.src = creation.image
-  innerContainer.appendChild(panelImageContainer)
-  panelImageContainer.appendChild(panelImage)
-
-  // info container
-  var panelInfoContainer = document.createElement('div')
-  panelInfoContainer.className = 'panel info'
-  innerContainer.appendChild(panelInfoContainer)
-  // info list
-  var infoList = document.createElement('ul')
-  infoList.className = 'main info'
-  var infoItem1 = document.createElement('li')
-  infoItem1.appendChild(document.createTextNode(creation.bannerName))
-  var infoItem2 = document.createElement('li')
-  infoItem2.appendChild(document.createTextNode('for ' + creation.companyName + ' from ' + creation.country))
-  var infoItem3 = document.createElement('li')
-  infoItem3.appendChild(document.createTextNode('Made by ' + creation.designer))
-  panelInfoContainer.appendChild(infoList)
-  infoList.appendChild(infoItem1)
-  infoList.appendChild(infoItem2)
-  infoList.appendChild(infoItem3)
-  // rating
-  var rating = document.createElement('div')
-  rating.className = 'rating'
-  panelInfoContainer.appendChild(rating)
-  var ratingList = document.createElement('ul')
-  rating.appendChild(ratingList)
-  for (var i = 0; i < 5; i++) {
-    var listItem = document.createElement('li')
-    var starFull = document.createElement('i')
-    starFull.className = 'star icon'
-    listItem.appendChild(starFull)
-    ratingList.appendChild(listItem)
-  }
-  // button
-  var button = document.createElement('a')
-  button.className = 'ui tiny button pink'
-  button.href = '#'
-  button.innerHTML = 'See more'
-  ratingList.appendChild(button)
-
-  console.log(panelItem)
-  document.getElementById('panel-list').appendChild(panelItem)
+function createPanel(creation) {
+  return `<div class="column">
+    <div class="ui segment inverted grey">
+      <div class="panel image">
+        <img class="ui image" src="${creation.image}" alt="image">
+      </div>
+      <div class="panel info">
+        <ul class="main info">
+          <li>${creation.bannerName}</li>
+          <li>For <span>${creation.companyName}</span> from <span>${creation.country}</span></li>
+          <li>Made by <span>${creation.designer}</span></li>
+        </ul>
+        <div class="rating">
+          <ul>
+            <li><i class="star icon"></i></li>
+            <li><i class="star icon"></i></li>
+            <li><i class="star half empty icon"></i></li>
+            <li><i class="star empty icon"></i></li>
+            <li><i class="star empty icon"></i></li>
+            <a class="ui tiny button pink" href="#">See more</a>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>`
 }
+
+const panelList = document.getElementById('panel-list')
+panelList.innerHTML = creations.map(createPanel).join('')
